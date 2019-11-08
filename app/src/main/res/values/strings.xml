@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">The Fun Bakery</string>
+
+    <string name="main_top_menu_today">오늘 느낌</string>
+    <string name="main_top_menu_history">히스토리</string>
+    <string name="main_top_menu_guest">방명록</string>
+</resources>
