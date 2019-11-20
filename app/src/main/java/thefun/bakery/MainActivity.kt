@@ -1,11 +1,15 @@
 package thefun.bakery
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import thefun.bakery.api.ApiClient
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,12 +24,5 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.create_main_content).setOnClickListener {
 
         }
-//        val testEditor = findViewById<EditText>(R.id.test_editor)
-//        testEditor.setText("")
-//        findViewById<ImageView>(R.id.main_content_bg)?.let {
-//            it.setOnClickListener {
-//                testEditor.performClick()
-//            }
-//        }
     }
 }
