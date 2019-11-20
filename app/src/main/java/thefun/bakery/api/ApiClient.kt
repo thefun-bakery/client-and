@@ -1,32 +1,14 @@
 package thefun.bakery.api
 
-import android.content.SharedPreferences
-import com.google.gson.GsonBuilder
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import thefun.bakery.Const
-import thefun.bakery.SingletonHolder
-import java.util.concurrent.TimeUnit
+import android.app.Application
+import thefun.bakery.MainApp
+import thefun.bakery.Urls
 
-class ApiClient constructor(preferences: SharedPreferences) {
-    private val retrofit: Retrofit
+object ApiClient {
 
-    init {
-        val okHttpClient = OkHttpClient.Builder()
-            .readTimeout(20 * 1000, TimeUnit.MILLISECONDS)
-            .connectTimeout(5 * 1000, TimeUnit.MILLISECONDS)
-            .addInterceptor(RequestInterceptor(preferences))
-            .retryOnConnectionFailure(true)
-            .build()
-
-        retrofit = Retrofit.Builder()
-            .baseUrl(Const.API_SERVER_HOST)
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .build()
+    fun loginKakao(app: Application) {
+        if (app is MainApp) {
+            app.api?.loginKakao(Urls.loginKakao)
+        }
     }
-
-    companion object : SingletonHolder<ApiClient, SharedPreferences>(::ApiClient)
-
 }
