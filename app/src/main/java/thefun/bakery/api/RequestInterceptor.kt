@@ -11,7 +11,7 @@ class RequestInterceptor(private val preferences: SharedPreferences): Intercepto
         val builder = chain.request().newBuilder()
         builder.addHeader("Accept", "application/json")
         builder.header("Authorization",
-            "Bearer ${preferences.getString(Const.KEY_ACCESS_TOKEN, "")}")
+            "Bearer ${preferences.getString(Const.APP_ACCESS_TOKEN, "")}")
 
         val request = builder.build()
         return chain.proceed(request)
