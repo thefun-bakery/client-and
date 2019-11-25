@@ -2,17 +2,12 @@ package thefun.bakery.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import thefun.bakery.MainApp
+import androidx.appcompat.app.AppCompatActivity
 import thefun.bakery.R
-import thefun.bakery.Urls
 import thefun.bakery.Utils
-import thefun.bakery.api.Api
-import thefun.bakery.api.ApiClient
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,8 +26,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         Utils.checkPermission(this, Manifest.permission.INTERNET, permissionRequestCode)
-
-//        ApiClient.loginKakao(application)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>,

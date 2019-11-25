@@ -4,4 +4,6 @@
     <string name="main_top_menu_today">오늘 느낌</string>
     <string name="main_top_menu_history">히스토리</string>
     <string name="main_top_menu_guest">방명록</string>
+    <string name="kakao_app_key">f3d5f8f3a758ced5a94d9d4373e9b99f</string>
+    <string name="login_with_kakao_talk">카카오톡으로 시작</string>
 </resources>

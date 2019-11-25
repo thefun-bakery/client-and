@@ -1,11 +1,11 @@
 package thefun.bakery.api
 
-import io.reactivex.Completable
+import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Url
+import thefun.bakery.data.LoginResult
 
 interface Api {
 
-    @GET
-    open fun loginKakao(@Url url: String): Completable
+    @GET("auth/kakao/login")
+    fun loginKakao(): Call<LoginResult>
 }
