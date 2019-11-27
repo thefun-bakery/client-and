@@ -7,4 +7,6 @@
     <color name="white">#ffffff</color>
     <color name="white_50">#80ffffff</color>
     <color name="orange">#fa6400</color>
+    <color name="light_black">#131415</color>
+    <color name="light_gray">#66ffffff</color>
 </resources>

@@ -100,11 +100,11 @@ class LoginActivity: AppCompatActivity() {
                     response.body()?.let {
                         val pref = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
                         val editor = pref.edit()
-                        editor.putString(Const.APP_ACCESS_TOKEN, accessToken)
+                        editor.putString(Const.APP_ACCESS_TOKEN, it.accessToken)
                         editor.commit()
-                        Log.e(Const.LOG, it.accessToken)
+                        Log.e(Const.LOG, "==> " + it.accessToken)
 
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, NickNameRegistActivity::class.java))
                         finish()
                     }
                 }

@@ -6,4 +6,8 @@
     <string name="main_top_menu_guest">방명록</string>
     <string name="kakao_app_key">f3d5f8f3a758ced5a94d9d4373e9b99f</string>
     <string name="login_with_kakao_talk">카카오톡으로 시작</string>
+    <string name="title_for_nickname_regist">마이홈 닉네임 입력</string>
+    <string name="done_for_nickname_regist">입주</string>
+    <string name="desc_for_nickname_regist">입력하신 닉네임으로 마이홈을 사용하고 친구와 서로를 구분합니다.</string>
+    <string name="hint_for_nickname">닉네임을 입력해주세요.</string>
 </resources>
