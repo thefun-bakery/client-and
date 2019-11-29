@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.RelativeLayout
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.kakao.auth.AuthType
 import com.kakao.auth.ISessionCallback
@@ -59,8 +59,8 @@ class LoginActivity: AppCompatActivity() {
         sessionCallback = SessionCallback()
         Session.getCurrentSession().addCallback(sessionCallback)
 
-        findViewById<RelativeLayout>(R.id.login_with_kakaotalk).visibility = View.VISIBLE
-        findViewById<RelativeLayout>(R.id.btn_login_with_kakaotalk).setOnClickListener {
+        findViewById<LinearLayout>(R.id.btn_login_with_kakaotalk).visibility = View.VISIBLE
+        findViewById<LinearLayout>(R.id.btn_login_with_kakaotalk).setOnClickListener {
             Session.getCurrentSession().open(AuthType.KAKAO_TALK, this)
         }
     }

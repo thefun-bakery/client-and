@@ -7,4 +7,5 @@ object Const {
     val KAKAO_ACCESS_TOKEN = "kakao-access-token"
     val NICK_NAME = "nickname"
     val PROFILE_IMAGE_URL = "profile_image_url"
+    val MAX_LENGTH_NICK_NAME = 14
 }
