@@ -1,10 +1,10 @@
 package thefun.bakery.activity
 
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
             it.text = "Kelly's Home"    //TODO remove
         }
 
-        findViewById<ImageView>(R.id.create_main_content).setOnClickListener {
-
+        findViewById<View>(R.id.create_main_content).setOnClickListener {
+            startActivity(Intent(this@MainActivity, FeelingSelectActivity::class.java))
         }
 
         ApiManager.api?.getMainHome()?.enqueue(object : Callback<MainHome> {

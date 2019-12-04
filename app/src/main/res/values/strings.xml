@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">The Fun Bakery</string>
 
-    <string name="main_top_menu_today">오늘 느낌</string>
+    <string name="main_top_menu_today">오늘</string>
     <string name="main_top_menu_history">히스토리</string>
     <string name="main_top_menu_guest">방명록</string>
     <string name="kakao_app_key">f3d5f8f3a758ced5a94d9d4373e9b99f</string>
@@ -10,4 +10,5 @@
     <string name="done_for_nickname_regist">입주</string>
     <string name="desc_for_nickname_regist">입력하신 닉네임으로 마이홈을 사용하고 친구와 서로를 구분합니다.</string>
     <string name="hint_for_nickname">닉네임을 입력해주세요.</string>
+    <string name="feeling_select_title">느낌 더하기</string>
 </resources>

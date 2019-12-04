@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:grid="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/feeling_close_btn"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_marginLeft="18dp"
+            android:background="@drawable/baseline_clear_black_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/feeling_select_title"
+            android:textSize="20sp"
+            android:layout_marginLeft="12dp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/happy_sample_on"
+                android:layout_marginRight="15dp"/>
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/happy_sample_off"
+                android:layout_marginRight="15dp"/>
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/happy_sample_off"
+                android:layout_marginRight="15dp"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="3" />
+
+<!--    <GridLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:columnCount="3"-->
+
+<!--        >-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            grid:layout_columnWeight="1"-->
+<!--            android:background="@drawable/happy_sample_on" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            grid:layout_columnWeight="1"-->
+<!--            grid:layout_gravity="fill_horizontal"-->
+<!--            android:gravity="center"-->
+<!--            android:background="@drawable/happy_sample_off" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            grid:layout_columnWeight="1"-->
+<!--            android:background="@drawable/happy_sample_off" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            grid:layout_columnWeight="1"-->
+<!--            android:background="@drawable/happy_sample_off" />-->
+<!--    </GridLayout>-->
+</LinearLayout>
