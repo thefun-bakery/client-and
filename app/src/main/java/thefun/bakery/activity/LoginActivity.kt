@@ -1,7 +1,9 @@
 package thefun.bakery.activity
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,7 +19,8 @@ import retrofit2.Response
 import thefun.bakery.BuildConfig
 import thefun.bakery.Const
 import thefun.bakery.R
-import thefun.bakery.api.ApiClient
+import thefun.bakery.Utils
+import thefun.bakery.api.ApiManager
 import thefun.bakery.data.IsLogin
 import thefun.bakery.data.LoginResult
 
@@ -36,7 +39,7 @@ class LoginActivity: AppCompatActivity() {
         if (pref.getString(Const.APP_ACCESS_TOKEN, "").isNullOrEmpty()) {
             showKakaoLogin()
         } else {
-            ApiClient.api?.isLogin()?.enqueue(object : Callback<IsLogin> {
+            ApiManager.api?.isLogin()?.enqueue(object : Callback<IsLogin> {
                 override fun onResponse(call: Call<IsLogin>, response: Response<IsLogin>) {
                     response.body()?.let {
                         if (it.isLogin) {
@@ -53,6 +56,8 @@ class LoginActivity: AppCompatActivity() {
                 }
             })
         }
+
+        Utils.checkPermission(this, Manifest.permission.INTERNET, Const.PerminssionRequestCode)
     }
 
     private fun showKakaoLogin() {
@@ -82,6 +87,19 @@ class LoginActivity: AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>,
+                                            grantResults: IntArray) {
+        when (requestCode) {
+            Const.PerminssionRequestCode -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    // permission was granted
+                } else {
+                    // permission denied
+                }
+            }
+        }
+    }
+
     private inner class SessionCallback : ISessionCallback {
 
         override fun onSessionOpened() {
@@ -94,7 +112,7 @@ class LoginActivity: AppCompatActivity() {
             editor.putString(Const.APP_ACCESS_TOKEN, accessToken)
             editor.commit()
 
-            ApiClient.api?.loginKakao()?.enqueue(object : Callback<LoginResult> {
+            ApiManager.api?.loginKakao()?.enqueue(object : Callback<LoginResult> {
                 override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
 
                     response.body()?.let {

@@ -16,7 +16,7 @@ import retrofit2.Response
 import thefun.bakery.BuildConfig
 import thefun.bakery.Const
 import thefun.bakery.R
-import thefun.bakery.api.ApiClient
+import thefun.bakery.api.ApiManager
 import thefun.bakery.data.MyData
 import thefun.bakery.data.NickName
 
@@ -57,7 +57,7 @@ class NickNameRegistActivity : AppCompatActivity() {
             val nickName = nickNameEditor?.text.toString()
 
             if (!nickName.isNullOrEmpty()) {
-                ApiClient.api?.updateNickName(NickName(nickName))?.enqueue(object : Callback<MyData> {
+                ApiManager.api?.updateNickName(NickName(nickName))?.enqueue(object : Callback<MyData> {
                     override fun onResponse(call: Call<MyData>, response: Response<MyData>) {
                         response.body()?.let {
                             Log.e(Const.LOG, "${it.nickname}, ${it.profileImageUrl}")

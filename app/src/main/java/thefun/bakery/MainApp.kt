@@ -7,7 +7,7 @@ import com.google.gson.*
 import com.kakao.auth.*
 import net.danlew.android.joda.JodaTimeAndroid
 import org.joda.time.DateTime
-import thefun.bakery.api.ApiClient
+import thefun.bakery.api.ApiManager
 import java.lang.reflect.Type
 
 class MainApp: Application() {
@@ -19,7 +19,7 @@ class MainApp: Application() {
 
         JodaTimeAndroid.init(this)
 
-        ApiClient.init(getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE))
+        ApiManager.init(getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE))
     }
 
     class DateTimeConverter: JsonSerializer<DateTime>, JsonDeserializer<DateTime> {

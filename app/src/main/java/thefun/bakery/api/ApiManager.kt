@@ -12,7 +12,7 @@ import thefun.bakery.Const
 import thefun.bakery.MainApp
 import java.util.concurrent.TimeUnit
 
-object ApiClient {
+object ApiManager {
 
     var api: Api? = null
 

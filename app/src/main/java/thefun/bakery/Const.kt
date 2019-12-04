@@ -8,4 +8,6 @@ object Const {
     val NICK_NAME = "nickname"
     val PROFILE_IMAGE_URL = "profile_image_url"
     val MAX_LENGTH_NICK_NAME = 14
+
+    val PerminssionRequestCode = 1020
 }
