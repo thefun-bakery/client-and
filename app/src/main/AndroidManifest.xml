@@ -31,6 +31,7 @@
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.NickNameRegistActivity" />
         <activity android:name=".activity.FeelingSelectActivity" />
+        <activity android:name=".activity.FeelingPreviewActivity" />
      </application>
 
 </manifest>

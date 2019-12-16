@@ -1,5 +1,6 @@
 package thefun.bakery.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -40,11 +41,14 @@ class FeelingSelectActivity: AppCompatActivity() {
         adapter.itemList.add(R.drawable.happy_sample_on)
         adapter.itemList.add(R.drawable.happy_sample_on)
 
-
         recyclerView = findViewById(R.id.recycler_view)
 
         recyclerView?.adapter = adapter
         val gridLayoutManager = GridLayoutManager(this, 3)
         recyclerView?.layoutManager = gridLayoutManager
+
+        adapter.clickSubject.subscribe {
+            startActivity(Intent(this@FeelingSelectActivity, FeelingPreviewActivity::class.java))
+        }
     }
 }

@@ -50,4 +50,6 @@ dependencies {
     implementation 'net.danlew:android.joda:2.+'
 
     implementation 'com.kakao.sdk:usermgmt:1.15.0'
+
+    implementation 'com.airbnb.android:lottie:3.+'
 }
