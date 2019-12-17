@@ -1,5 +1,6 @@
 package thefun.bakery.api
 
+import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -13,7 +14,7 @@ interface Api {
     fun loginKakao(): Call<LoginResult>
 
     @GET("auth/is-login")
-    fun isLogin(): Call<IsLogin>
+    fun isLogin(): Observable<IsLogin>
 
     @PATCH("v1/users/me")
     fun updateNickName(@Body nickName: NickName): Call<MyData>

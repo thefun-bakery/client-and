@@ -2,58 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:layout_marginTop="5dp">
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
 
     <RelativeLayout
+        android:id="@+id/tab_main_btn"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/rect_main_top_menu_on"
-        android:layout_marginRight="1dp"
-        android:paddingTop="11dp"
-        android:paddingBottom="13dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#000000"
-            tools:text="오늘느낌"
-            android:text="@string/main_top_menu_today"
-            android:layout_centerInParent="true"/>
+        android:tag="on"
+        android:layout_marginRight="1dp">
+        <ImageView
+            android:id="@+id/tab_main_icon"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/ic_tab_main_on"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/tab_history_btn"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/rect_main_top_menu_off"
-        android:layout_marginRight="1dp"
-        android:paddingTop="11dp"
-        android:paddingBottom="13dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#000000"
-            tools:text="히스토리"
-            android:text="@string/main_top_menu_history"
-            android:layout_centerInParent="true"/>
+        android:layout_marginRight="1dp">
+        <ImageView
+            android:id="@+id/tab_history_icon"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/ic_tab_history"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/tab_visitor_btn"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rect_main_top_menu_off"
-        android:paddingTop="11dp"
-        android:paddingBottom="13dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#000000"
-            tools:text="방명록"
-            android:text="@string/main_top_menu_guest"
-            android:layout_centerInParent="true"/>
+        android:background="@drawable/rect_main_top_menu_off">
+        <ImageView
+            android:id="@+id/tab_visitor_icon"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/ic_tab_visitor"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
     </RelativeLayout>
 </LinearLayout>

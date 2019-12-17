@@ -13,6 +13,8 @@ import com.kakao.auth.AuthType
 import com.kakao.auth.ISessionCallback
 import com.kakao.auth.Session
 import com.kakao.util.exception.KakaoException
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,28 +36,37 @@ class LoginActivity: AppCompatActivity() {
 
         setContentView(R.layout.activity_login)
 
-        val pref = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
-
-        if (pref.getString(Const.APP_ACCESS_TOKEN, "").isNullOrEmpty()) {
-            showKakaoLogin()
-        } else {
-            ApiManager.api?.isLogin()?.enqueue(object : Callback<IsLogin> {
-                override fun onResponse(call: Call<IsLogin>, response: Response<IsLogin>) {
-                    response.body()?.let {
-                        if (it.isLogin) {
-                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                            finish()
-                        } else {
-                            showKakaoLogin()
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<IsLogin>, t: Throwable) {
-                    Log.e(Const.LOG, t.localizedMessage)
-                }
-            })
-        }
+        showKakaoLogin()
+//        val pref = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
+//        if (pref.getString(Const.APP_ACCESS_TOKEN, "").isNullOrEmpty()) {
+//            showKakaoLogin()
+//        } else {
+////            ApiManager.api?.isLogin()!!
+////                .subscribeOn(Schedulers.io())
+////                .observeOn(AndroidSchedulers.mainThread())
+////                .subscribe({
+////                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+////                    finish()
+////                }, {
+////                    showKakaoLogin()
+////                })
+////            ApiManager.api?.isLogin()?.enqueue(object : Callback<IsLogin> {
+////                override fun onResponse(call: Call<IsLogin>, response: Response<IsLogin>) {
+////                    response.body()?.let {
+////                        if (it.isLogin) {
+////                            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+////                            finish()
+////                        } else {
+////                            showKakaoLogin()
+////                        }
+////                    }
+////                }
+////
+////                override fun onFailure(call: Call<IsLogin>, t: Throwable) {
+////                    Log.e(Const.LOG, t.localizedMessage)
+////                }
+////            })
+//        }
 
         Utils.checkPermission(this, Manifest.permission.INTERNET, Const.PerminssionRequestCode)
     }

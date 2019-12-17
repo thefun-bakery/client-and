@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
@@ -29,6 +30,25 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity, FeelingSelectActivity::class.java))
         }
 
+        findViewById<View>(R.id.tab_main_btn).setOnClickListener {
+            it.tag = "on"
+            findViewById<View>(R.id.tab_history_btn).tag = "off"
+            findViewById<View>(R.id.tab_visitor_btn).tag = "off"
+            setTabButton()
+        }
+        findViewById<View>(R.id.tab_history_btn).setOnClickListener {
+            it.tag = "on"
+            findViewById<View>(R.id.tab_main_btn).tag = "off"
+            findViewById<View>(R.id.tab_visitor_btn).tag = "off"
+            setTabButton()
+        }
+        findViewById<View>(R.id.tab_visitor_btn).setOnClickListener {
+            it.tag = "on"
+            findViewById<View>(R.id.tab_main_btn).tag = "off"
+            findViewById<View>(R.id.tab_history_btn).tag = "off"
+            setTabButton()
+        }
+
         ApiManager.api?.getMainHome()?.enqueue(object : Callback<MainHome> {
             override fun onFailure(call: Call<MainHome>, t: Throwable) {
                 Log.e(Const.LOG, t.localizedMessage)
@@ -47,6 +67,38 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun setTabButton() {
+        if (findViewById<View>(R.id.tab_main_btn).tag == "on") {
+            findViewById<View>(R.id.tab_main_btn).setBackgroundResource(R.drawable.rect_main_top_menu_on)
+            findViewById<View>(R.id.tab_history_btn).setBackgroundResource(R.drawable.rect_main_top_menu_off)
+            findViewById<View>(R.id.tab_visitor_btn).setBackgroundResource(R.drawable.rect_main_top_menu_off)
+            findViewById<ImageView>(R.id.tab_main_icon).setImageResource(R.drawable.ic_tab_main_on)
+            findViewById<ImageView>(R.id.tab_history_icon).setImageResource(R.drawable.ic_tab_history)
+            findViewById<ImageView>(R.id.tab_visitor_icon).setImageResource(R.drawable.ic_tab_visitor)
+            return
+        }
+
+        if (findViewById<View>(R.id.tab_history_btn).tag == "on") {
+            findViewById<View>(R.id.tab_main_btn).setBackgroundResource(R.drawable.rect_main_top_menu_off)
+            findViewById<View>(R.id.tab_history_btn).setBackgroundResource(R.drawable.rect_main_top_menu_on)
+            findViewById<View>(R.id.tab_visitor_btn).setBackgroundResource(R.drawable.rect_main_top_menu_off)
+            findViewById<ImageView>(R.id.tab_main_icon).setImageResource(R.drawable.ic_tab_main)
+            findViewById<ImageView>(R.id.tab_history_icon).setImageResource(R.drawable.ic_tab_history_on)
+            findViewById<ImageView>(R.id.tab_visitor_icon).setImageResource(R.drawable.ic_tab_visitor)
+            return
+        }
+
+        if (findViewById<View>(R.id.tab_visitor_btn).tag == "on") {
+            findViewById<View>(R.id.tab_main_btn).setBackgroundResource(R.drawable.rect_main_top_menu_off)
+            findViewById<View>(R.id.tab_history_btn).setBackgroundResource(R.drawable.rect_main_top_menu_off)
+            findViewById<View>(R.id.tab_visitor_btn).setBackgroundResource(R.drawable.rect_main_top_menu_on)
+            findViewById<ImageView>(R.id.tab_main_icon).setImageResource(R.drawable.ic_tab_main)
+            findViewById<ImageView>(R.id.tab_history_icon).setImageResource(R.drawable.ic_tab_history)
+            findViewById<ImageView>(R.id.tab_visitor_icon).setImageResource(R.drawable.ic_tab_visitor_on)
+            return
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>,
