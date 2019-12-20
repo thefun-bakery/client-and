@@ -30,10 +30,10 @@ class FeelingSelectAdapter: RecyclerView.Adapter<FeelingSelectAdapter.ViewHolder
         private val feelingImg: ImageView = itemView.im_feeling
 
         fun setData(resId: Int) {
-            feelingImg.setBackgroundResource(resId)
+            feelingImg.setImageResource(resId)
 
             itemView.setOnClickListener {
-                clickSubject.onNext(0)
+                clickSubject.onNext(resId)
             }
         }
     }

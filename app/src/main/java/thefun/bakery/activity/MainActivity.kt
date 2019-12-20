@@ -62,6 +62,10 @@ class MainActivity : AppCompatActivity() {
                         tv.text = it.name
                     }
 
+                    findViewById<TextView>(R.id.main_desc)?.let { tv ->
+                        tv.text = it.desc
+                    }
+
 //                    findViewById<RelativeLayout>(R.id.main_home_background)
 //                        .background = Color.
                 }

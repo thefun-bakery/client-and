@@ -21,4 +21,7 @@ interface Api {
 
     @GET("v1/homes/mine")
     fun getMainHome(): Call<MainHome>
+
+    @GET("v1/assets/emotion-image")
+    fun getEmotionImages(): Observable<Emotions>
 }
