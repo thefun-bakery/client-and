@@ -89,7 +89,7 @@ class FeelingSelectActivity: AppCompatActivity() {
 
 
         adapter.clickSubject.subscribe {
-            intent = Intent(this@FeelingSelectActivity, FeelingPreviewActivity::class.java)
+            intent = Intent(this@FeelingSelectActivity, ImageSelectActivity::class.java)
             intent.putExtra("resId", it)
             startActivity(intent)
         }
