@@ -28,7 +28,7 @@ class FeelingSelectActivity: AppCompatActivity() {
             ?.subscribe({
                 Log.e("###", it.toString())
             }, {
-
+                Log.e("###", it.localizedMessage)
             })
 
         findViewById<ImageView>(R.id.feeling_close_btn).setOnClickListener {

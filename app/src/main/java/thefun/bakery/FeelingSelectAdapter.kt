@@ -7,10 +7,12 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.layout_feeling_select.view.*
+import thefun.bakery.data.EmotionImg
 
 class FeelingSelectAdapter: RecyclerView.Adapter<FeelingSelectAdapter.ViewHolder>() {
 
     val itemList = ArrayList<Int>()
+    val imgItemList = ArrayList<EmotionImg>()
     val clickSubject: PublishSubject<Int> = PublishSubject.create()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
