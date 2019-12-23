@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<View>(R.id.create_main_content).setOnClickListener {
-            startActivity(Intent(this@MainActivity, FeelingSelectActivity::class.java))
+            startActivityForResult(Intent(this@MainActivity, FeelingSelectActivity::class.java), 1001)
         }
 
         findViewById<View>(R.id.tab_main_btn).setOnClickListener {
@@ -116,5 +116,20 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            1001 -> {
+                data?.let {
+                    val resId = it.getIntExtra("resId", 0)
+                    val story = it.getStringExtra("story")
+
+                    findViewById<ImageView>(R.id.feeling_im).setImageResource(resId)
+                    findViewById<TextView>(R.id.main_desc).text = story
+                }
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

@@ -17,4 +17,10 @@
     <string name="icon_camera">직접 촬영</string>
     <string name="icon_video">동영상</string>
     <string name="icon_search">검색</string>
+    <string name="story_write_title">이야기 더하기</string>
+    <string name="done">완료</string>
+    <string name="hint_for_story">오늘 느낌에 대해 이야기해주세요.</string>
+    <string name="share_content">함께 공유</string>
+    <string name="instagram">Instagram</string>
+    <string name="facebook">Facebook</string>
 </resources>
