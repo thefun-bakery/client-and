@@ -65,10 +65,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/main_content_iv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                     android:background="@drawable/rect_main_content_bg"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
@@ -105,6 +106,7 @@
                                 android:src="@drawable/ic_feel_hug"/>
 
                             <TextView
+                                android:id="@+id/current_time"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="sans-serif-thin"
@@ -114,7 +116,51 @@
                                 android:text="2019. 10. 01  I  5 : 32 : 32 pm" />
                         </LinearLayout>
                     </RelativeLayout>
-                </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/hug"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_hug_on"
+                            android:layout_marginRight="9dp"/>
+                        <ImageView
+                            android:id="@+id/share"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_toRightOf="@+id/hug"
+                            android:src="@drawable/ic_share"/>
+
+                        <ImageView
+                            android:id="@+id/more"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:src="@drawable/ic_more"/>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="안아준 사람 999명"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:layout_marginTop="15dp"/>
+
+                    <TextView
+                        android:id="@+id/emotion_msg"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_below="@+id/main_content_iv"

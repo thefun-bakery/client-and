@@ -2,6 +2,7 @@ package thefun.bakery.activity
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,6 +16,11 @@ import thefun.bakery.Const
 import thefun.bakery.R
 import thefun.bakery.api.ApiManager
 import thefun.bakery.data.MainHome
+import android.os.Handler
+import android.os.Message
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,6 +55,17 @@ class MainActivity : AppCompatActivity() {
             setTabButton()
         }
 
+        findViewById<ImageView>(R.id.hug).tag = "off"
+        findViewById<ImageView>(R.id.hug).setOnClickListener {
+            if (it.tag == "off") {
+                findViewById<ImageView>(R.id.hug).setImageResource(R.drawable.ic_hug_off)
+                it.tag ="on"
+            } else {
+                findViewById<ImageView>(R.id.hug).setImageResource(R.drawable.ic_hug_on)
+                it.tag ="off"
+            }
+        }
+
         ApiManager.api?.getMainHome()?.enqueue(object : Callback<MainHome> {
             override fun onFailure(call: Call<MainHome>, t: Throwable) {
                 Log.e(Const.LOG, t.localizedMessage)
@@ -65,12 +82,25 @@ class MainActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.main_desc)?.let { tv ->
                         tv.text = it.desc
                     }
-
-//                    findViewById<RelativeLayout>(R.id.main_home_background)
-//                        .background = Color.
                 }
             }
         })
+
+        val clockHandler = ClockHandler()
+        clockHandler.currentTextView = findViewById(R.id.current_time)
+        clockHandler.sendEmptyMessage(0)
+    }
+
+    private class ClockHandler: Handler() {
+
+        var currentTextView: TextView? = null
+
+        override fun handleMessage(msg: Message?) {
+            val sdf = SimpleDateFormat("yyyy. MM. dd  |  HH : mm : ss", Locale.getDefault())
+
+            currentTextView?.text = sdf.format(Date())
+            this.sendEmptyMessageDelayed(0, 1000)
+        }
     }
 
     private fun setTabButton() {
@@ -126,7 +156,12 @@ class MainActivity : AppCompatActivity() {
                     val story = it.getStringExtra("story")
 
                     findViewById<ImageView>(R.id.feeling_im).setImageResource(resId)
-                    findViewById<TextView>(R.id.main_desc).text = story
+                    if (story.isNullOrEmpty()) {
+                        findViewById<TextView>(R.id.emotion_msg).visibility = View.GONE
+                    } else {
+                        findViewById<TextView>(R.id.emotion_msg).visibility = View.VISIBLE
+                        findViewById<TextView>(R.id.emotion_msg).text = story
+                    }
                 }
             }
         }
