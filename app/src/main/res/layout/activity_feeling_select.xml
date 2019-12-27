@@ -43,7 +43,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="#000000"
-                android:src="@drawable/ic_feel_hug"
+                android:src="@drawable/preview_hug"
                 android:layout_marginRight="15dp"/>
         </LinearLayout>
     </HorizontalScrollView>

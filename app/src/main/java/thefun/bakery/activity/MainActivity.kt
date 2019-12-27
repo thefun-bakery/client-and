@@ -21,6 +21,7 @@ import thefun.bakery.api.ApiManager
 import thefun.bakery.data.MainHome
 import android.os.Handler
 import android.os.Message
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import thefun.bakery.Utils
 import java.text.SimpleDateFormat
@@ -39,6 +40,11 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.create_main_content).setOnClickListener {
             startActivityForResult(Intent(this@MainActivity, FeelingSelectActivity::class.java), 1001)
+        }
+
+        findViewById<ImageButton>(R.id.btn_menu).setOnClickListener {
+            startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
         }
 
         findViewById<View>(R.id.tab_main_btn).setOnClickListener {

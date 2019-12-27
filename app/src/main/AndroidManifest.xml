@@ -35,6 +35,7 @@
         <activity android:name=".activity.FeelingPreviewActivity" />
         <activity android:name=".activity.ImageSelectActivity" />
         <activity android:name=".activity.StoryWriteActivity" />
+        <activity android:name=".activity.SettingsActivity" />
      </application>
 
 </manifest>

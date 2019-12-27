@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.provider.MediaStore
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -14,10 +16,14 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import thefun.bakery.R
 import thefun.bakery.Utils
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class ImageSelectActivity: AppCompatActivity() {
     private var bgUri = ""
+    private var height = 0
+    private var width = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,11 +64,29 @@ class ImageSelectActivity: AppCompatActivity() {
 //            }
         }
 
+        val clockHandler = ClockHandler()
+        clockHandler.currentTextView = findViewById(R.id.current_time)
+        clockHandler.sendEmptyMessage(0)
+
         findViewById<TextView>(R.id.image_done_btn).setOnClickListener{
             intent = Intent(this@ImageSelectActivity, StoryWriteActivity::class.java)
             intent.putExtra("resId", resId)
             intent.putExtra("bgUri", bgUri)
+            intent.putExtra("width", width)
+            intent.putExtra("height", height)
             startActivityForResult(intent, 1001)
+        }
+    }
+
+    private class ClockHandler: Handler() {
+
+        var currentTextView: TextView? = null
+
+        override fun handleMessage(msg: Message?) {
+            val sdf = SimpleDateFormat("yyyy. MM. dd  |  HH : mm : ss", Locale.getDefault())
+
+            currentTextView?.text = sdf.format(Date())
+            this.sendEmptyMessageDelayed(0, 1000)
         }
     }
 
@@ -92,12 +116,16 @@ class ImageSelectActivity: AppCompatActivity() {
                             val bg = findViewById<LinearLayout>(R.id.feeling_bg)
                             val cropped = Utils.scaleCenterCrop(img, bg.height, bg.width)
 
-                            val blurred = Utils.blur(cropped, this)
-                            if (blurred != null) {
-                                bg.background = BitmapDrawable(blurred)
-                            } else {
-                                bg.background = BitmapDrawable(cropped)
-                            }
+                            width = bg.width
+                            height = bg.height
+
+                            bg.background = BitmapDrawable(cropped)
+//                            val blurred = Utils.blur(cropped, this)
+//                            if (blurred != null) {
+//                                bg.background = BitmapDrawable(blurred)
+//                            } else {
+//                                bg.background = BitmapDrawable(cropped)
+//                            }
                         }
                     }
                 }

@@ -107,7 +107,7 @@
                     <ImageView
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:src="@drawable/ic_search"
+                        android:src="@drawable/ic_share"
                         android:layout_marginRight="7dp"/>
 
                     <TextView
@@ -126,11 +126,18 @@
                     android:paddingLeft="2dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:text="@string/instagram"
                         android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_switch_on"
+                        android:layout_marginRight="7dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -141,11 +148,18 @@
                     android:paddingLeft="2dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:text="@string/facebook"
                         android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="42dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_switch_on"
+                        android:layout_marginRight="7dp"/>
                 </LinearLayout>
 
             </LinearLayout>
