@@ -60,6 +60,7 @@
             android:paddingBottom="20dp">
 
             <LinearLayout
+                android:id="@+id/feeling_bg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -97,6 +98,7 @@
                 android:paddingRight="10dp">
 
                 <LinearLayout
+                    android:id="@+id/gallery_btn"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -141,6 +143,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/camera_btn"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

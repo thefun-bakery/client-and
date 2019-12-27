@@ -2,7 +2,10 @@ package thefun.bakery.activity
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.icu.util.Calendar
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -18,6 +21,8 @@ import thefun.bakery.api.ApiManager
 import thefun.bakery.data.MainHome
 import android.os.Handler
 import android.os.Message
+import android.widget.LinearLayout
+import thefun.bakery.Utils
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -154,6 +159,7 @@ class MainActivity : AppCompatActivity() {
                 data?.let {
                     val resId = it.getIntExtra("resId", 0)
                     val story = it.getStringExtra("story")
+                    val bgUri = it.getStringExtra("bgUri")
 
                     findViewById<ImageView>(R.id.feeling_im).setImageResource(resId)
                     if (story.isNullOrEmpty()) {
@@ -161,6 +167,22 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         findViewById<TextView>(R.id.emotion_msg).visibility = View.VISIBLE
                         findViewById<TextView>(R.id.emotion_msg).text = story
+                    }
+
+                    if (!bgUri.isNullOrEmpty()) {
+                        val inputStream = contentResolver.openInputStream(Uri.parse(bgUri))
+                        val img = BitmapFactory.decodeStream(inputStream)
+                        inputStream.close()
+
+                        val bg = findViewById<ImageView>(R.id.main_content_bg)
+                        val cropped = Utils.scaleCenterCrop(img, bg.height, bg.width)
+
+                        val blurred = Utils.blur(cropped, this)
+                        if (blurred != null) {
+                            bg.setImageBitmap(blurred)
+                        } else {
+                            bg.setImageBitmap(cropped)
+                        }
                     }
                 }
             }

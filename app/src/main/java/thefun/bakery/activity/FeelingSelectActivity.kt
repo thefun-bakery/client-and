@@ -104,6 +104,7 @@ class FeelingSelectActivity: AppCompatActivity() {
                     val newIntent = Intent()
                     newIntent.putExtra("resId", it.getIntExtra("resId", 0))
                     newIntent.putExtra("story", it.getStringExtra("story"))
+                    newIntent.putExtra("bgUri", it.getStringExtra("bgUri"))
                     setResult(Activity.RESULT_OK, newIntent)
                     finish()
                 }
