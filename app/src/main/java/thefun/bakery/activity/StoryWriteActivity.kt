@@ -40,19 +40,33 @@ class StoryWriteActivity : AppCompatActivity() {
             finish()
         }
 
-        if (!bgUri.isNullOrEmpty()) {
-            val inputStream = contentResolver.openInputStream(Uri.parse(bgUri))
-            val img = BitmapFactory.decodeStream(inputStream)
-            inputStream.close()
+//        if (!bgUri.isNullOrEmpty()) {
+//            val inputStream = contentResolver.openInputStream(Uri.parse(bgUri))
+//            val img = BitmapFactory.decodeStream(inputStream)
+//            inputStream.close()
+//
+//            val bg = findViewById<ImageView>(R.id.story_feeling_bg)
+//            val cropped = Utils.scaleCenterCrop(img, bgHeight, bgWidth)
+//
+//            val blurred = Utils.blur(cropped, this)
+//            if (blurred != null) {
+//                bg.setImageBitmap(blurred)
+//            } else {
+//                bg.setImageBitmap()
+//            }
+//        }
 
-            val bg = findViewById<LinearLayout>(R.id.story_feeling_bg)
-            val cropped = Utils.scaleCenterCrop(img, bgHeight, bgWidth)
-
-            val blurred = Utils.blur(cropped, this)
-            if (blurred != null) {
-                bg.background = BitmapDrawable(blurred)
-            } else {
-                bg.background = BitmapDrawable(cropped)
+        val filePath = intent.getStringExtra("filePath")
+        if (!filePath.isNullOrEmpty()) {
+            val bitmap = BitmapFactory.decodeFile(filePath)
+            bitmap?.let {
+                val bg = findViewById<ImageView>(R.id.story_feeling_bg)
+                val blurred = Utils.blur(it, this)
+                if (blurred == null) {
+                    bg.setImageBitmap(it)
+                } else {
+                    bg.setImageBitmap(blurred)
+                }
             }
         }
 
@@ -63,6 +77,7 @@ class StoryWriteActivity : AppCompatActivity() {
             newIntent.putExtra("resId", resId)
             newIntent.putExtra("story", story)
             newIntent.putExtra("bgUri", bgUri)
+            newIntent.putExtra("filePath", filePath)
             setResult(Activity.RESULT_OK, newIntent)
             finish()
         }

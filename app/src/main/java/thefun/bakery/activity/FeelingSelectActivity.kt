@@ -105,6 +105,7 @@ class FeelingSelectActivity: AppCompatActivity() {
                     newIntent.putExtra("resId", it.getIntExtra("resId", 0))
                     newIntent.putExtra("story", it.getStringExtra("story"))
                     newIntent.putExtra("bgUri", it.getStringExtra("bgUri"))
+                    newIntent.putExtra("filePath", it.getStringExtra("filePath"))
                     setResult(Activity.RESULT_OK, newIntent)
                     finish()
                 }

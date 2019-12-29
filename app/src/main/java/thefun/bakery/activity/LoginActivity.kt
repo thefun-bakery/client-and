@@ -67,8 +67,6 @@ class LoginActivity: AppCompatActivity() {
 ////                }
 ////            })
 //        }
-
-        Utils.checkPermission(this, Manifest.permission.INTERNET, Const.PerminssionRequestCode)
     }
 
     private fun showKakaoLogin() {

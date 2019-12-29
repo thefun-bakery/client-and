@@ -64,4 +64,6 @@ dependencies {
 //    kapt 'com.github.bumptech.glide:compiler:4.8.0'
 
     implementation 'com.caverock:androidsvg:1.2.1'
+
+    implementation "com.naver.android.helloyako:imagecropview:1.2.3"
 }

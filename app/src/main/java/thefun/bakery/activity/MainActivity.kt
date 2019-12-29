@@ -166,6 +166,7 @@ class MainActivity : AppCompatActivity() {
                     val resId = it.getIntExtra("resId", 0)
                     val story = it.getStringExtra("story")
                     val bgUri = it.getStringExtra("bgUri")
+                    val filePath = it.getStringExtra("filePath")
 
                     findViewById<ImageView>(R.id.feeling_im).setImageResource(resId)
                     if (story.isNullOrEmpty()) {
@@ -188,6 +189,19 @@ class MainActivity : AppCompatActivity() {
                             bg.setImageBitmap(blurred)
                         } else {
                             bg.setImageBitmap(cropped)
+                        }
+                    }
+
+                    if (!filePath.isNullOrEmpty()) {
+                        val bitmap = BitmapFactory.decodeFile(filePath)
+                        bitmap?.let {
+                            val bg = findViewById<ImageView>(R.id.main_content_bg)
+                            val blurred = Utils.blur(it, this)
+                            if (blurred != null) {
+                                bg.setImageBitmap(blurred)
+                            } else {
+                                bg.setImageBitmap(it)
+                            }
                         }
                     }
                 }

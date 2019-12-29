@@ -55,16 +55,37 @@
             android:layout_weight="1.2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp">
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:paddingBottom="18dp">
 
-            <LinearLayout
+            <com.naver.android.helloyako.imagecrop.view.ImageCropView
+                xmlns:imagecrop="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/feeling_bg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:visibility="visible"
                 android:background="#000000"
+                imagecrop:gridInnerColor="#66ffffff"
+                imagecrop:gridInnerStroke="1dp"
+                imagecrop:gridOuterColor="#ffffff"
+                imagecrop:gridOuterStroke="1dp"
+                imagecrop:outsideLayerColor="#99000000"
+                imagecrop:setInnerGridMode="on"
+                imagecrop:setOuterGridMode="on" />
+
+            <View
+                android:id="@+id/black_filter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#80000000"/>
+
+            <LinearLayout
+                android:id="@+id/text_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000000"
+                android:orientation="vertical"
                 android:gravity="center">
 
                 <ImageView
